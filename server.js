@@ -15,10 +15,25 @@ if (process.env.NODE_ENV === "production") {
 // Add routes, both API and view
 app.use(routes);
 
-// Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactreadinglist");
+// Database configuration with mongoose
 
-// Start the API server
-app.listen(PORT, function() {
-  console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
+// If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
+
+mongoose.connect("mongodb://foodheros:foodheros1212@ds141228.mlab.com:41228/heroku_67bsl94b");
+
+
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/foodHeros";
+
+mongoose.connect(MONGODB_URI,
+    { useNewUrlParser: true }
+);
+
+var db = mongoose.connection;
+
+db.on("error", function (error) {
+    console.log("Mongoose Error: ", error);
+});
+
+db.once("open", function () {
+    console.log("Mongoose connection successful.");
 });
