@@ -1,22 +1,27 @@
 // Dependencies
 var express = require("express");
+var favicon = require('serve-favicon');
+var bodyParser = require('body-parser');
 var logger = require("morgan");
 var mongoose = require("mongoose");
 var path = require("path");
-const routes = require("./routes");
 const app = express();
-// Scraping tools
 var request = require("request");
-var cheerio = require("cheerio");
+
+const passport = require("passport");
+
+const routes = require("./routes");
+const users = require("./routes/api/users");
+
+
 
 // Set mongoose to leverage built in JavaScript ES6 Promises
 mongoose.Promise = Promise;
 
 //Define port
-var port = process.env.PORT || 3006
+var port = process.env.PORT || 5000
 
-// Initialize Express
-var app = express();
+
 
 // Use morgan logger for logging requests
 app.use(logger("dev"));
@@ -26,20 +31,38 @@ app.use(express.json());
 // Make public a static folder
 app.use(express.static("public"));
 
-// Database configuration with mongoose
+// // Database configuration with mongoose
 
-// If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
-
-mongoose.connect("mongodb://FoodHeros:b7bWN!UAeb@R@4H@ds141198.mlab.com:41198/heroku_pwpxv4pd");
+// // If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
 
 
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/FoodHeros";
 
-mongoose.connect(MONGODB_URI,
-    { useNewUrlParser: true }
+
+const app = express();
+
+
+// Bodyparser middleware
+app.use(
+  bodyParser.urlencoded({
+    extended: false
+  })
 );
+app.use(bodyParser.json());
 
-var db = mongoose.connection;
+// DB Config
+const db = require("./config/keys").mongoURI;
+
+// Connect to MongoDB
+mongoose
+  .connect(
+    db,
+    { useNewUrlParser: true }
+  )
+  
+
+
+mongoURI = process.env.mongoURI || "mongodb://localhost/FoodHeros";
+
 
 db.on("error", function (error) {
     console.log("Mongoose Error: ", error);
@@ -48,3 +71,13 @@ db.on("error", function (error) {
 db.once("open", function () {
     console.log("Mongoose connection successful.");
 });
+
+
+  // Passport middleware
+app.use(passport.initialize());
+// Passport config
+require("./config/passport")(passport);
+// Routes
+app.use("/api/users", users);
+
+app.listen(port, () => console.log(`Server up and running on port ${port} !`));
