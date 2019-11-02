@@ -9,6 +9,6 @@ const inventorySchema = new Schema({
   date: { type: Date, default: Date.now }
 });
 
-const user = mongoose.model("inventory", inventorySchema);
+const inventory = mongoose.model("inventory", inventorySchema);
 
 module.exports = inventory;
