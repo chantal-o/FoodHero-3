@@ -11,6 +11,6 @@ const missionSchema = new Schema({
   date: { type: Date, default: Date.now }
 });
 
-const user = mongoose.model("mission", missionSchema);
+const mission = mongoose.model("mission", missionSchema);
 
 module.exports = mission;
