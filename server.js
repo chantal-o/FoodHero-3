@@ -19,7 +19,7 @@ const users = require("./routes/api/users");
 mongoose.Promise = Promise;
 
 //Define port
-var port = process.env.PORT || 5000
+var port = process.env.PORT || 3000
 
 
 
