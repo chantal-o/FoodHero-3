@@ -7,7 +7,11 @@ import { Provider } from "react-redux";
 import store from "./store";
 import Navbar from "./components/layout/Navbar";
 import Landing from "./components/layout/Landing";
-import Register from "./components/auth/Register";
+import Options from "./components/layout/Options";
+import RegisterD from "./components/auth/RegisterD";
+import RegisterR from "./components/auth/RegisterR";
+import RegisterV from "./components/auth/RegisterV";
+
 import Login from "./components/auth/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
@@ -37,7 +41,10 @@ class App extends Component {
           <div className="App">
             <Navbar />
             <Route exact path="/" component={Landing} />
-            <Route exact path="/register" component={Register} />
+            <Route exact path="/option" component={Options} />
+            <Route exact path="/registerd" component={RegisterD} />
+            <Route exact path="/registerr" component={RegisterR} />
+            <Route exact path="/registerv" component={RegisterV} />
             <Route exact path="/login" component={Login} />
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
