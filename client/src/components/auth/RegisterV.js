@@ -4,11 +4,16 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { registerUser } from "../../actions/authActions";
 import classnames from "classnames";
-class Register extends Component {
+class RegisterV extends Component {
   constructor() {
     super();
     this.state = {
-      name: "",
+      fname: "",
+      lname: "",
+      cname: "",
+      otype: "",
+      address:"",
+      phone: "",
       email: "",
       password: "",
       password2: "",
@@ -36,7 +41,12 @@ onSubmit = e => {
     e.preventDefault();
     
 const newUser = {
-      name: this.state.name,
+      fname: this.state.fname,
+      lname: this.state.lname,
+      cname: this.state.cname,
+      otype: this.state.otype,
+      address: this.state.address,
+      phone: this.state.phone,
       email: this.state.email,
       password: this.state.password,
       password2: this.state.password2
@@ -51,13 +61,13 @@ return (
       <div className="container">
         <div className="row">
           <div className="col s8 offset-s2">
-            <Link to="/" className="btn-flat waves-effect">
+            <Link to="/option" className="btn-flat waves-effect">
               <i className="material-icons left">keyboard_backspace</i> Back to
-              home
+              Options
             </Link>
             <div className="col s12" style={{ paddingLeft: "11.250px" }}>
               <h4>
-                <b>Register</b> below
+                <b>Volunteer Register</b>
               </h4>
               <p className="grey-text text-darken-1">
                 Already have an account? <Link to="/login">Log in</Link>
@@ -67,16 +77,86 @@ return (
               <div className="input-field col s12">
                 <input
                   onChange={this.onChange}
-                  value={this.state.name}
-                  error={errors.name}
-                  id="name"
+                  value={this.state.fname}
+                  error={errors.fname}
+                  id="fname"
                   type="text"
                   className={classnames("", {
-                    invalid: errors.name
+                    invalid: errors.fname
                   })}
                 />
-                <label htmlFor="name">Name</label>
-                <span className="red-text">{errors.name}</span>
+                <label htmlFor="fname">First Name</label>
+                <span className="red-text">{errors.fname}</span>
+              </div>
+              <div className="input-field col s12">
+                <input
+                  onChange={this.onChange}
+                  value={this.state.lname}
+                  error={errors.lname}
+                  id="lname"
+                  type="text"
+                  className={classnames("", {
+                    invalid: errors.lname
+                  })}
+                />
+                <label htmlFor="lname">Last Name</label>
+                <span className="red-text">{errors.lname}</span>
+              </div>
+              <div className="input-field col s12">
+                <input
+                  onChange={this.onChange}
+                  value={this.state.cname}
+                  error={errors.cname}
+                  id="cname"
+                  type="text"
+                  className={classnames("", {
+                    invalid: errors.cname
+                  })}
+                />
+                <label htmlFor="cname">Company Name</label>
+                <span className="red-text">{errors.cname}</span>
+              </div>
+              <div className="input-field col s12">
+                <input
+                  onChange={this.onChange}
+                  value={this.state.otype}
+                  error={errors.otype}
+                  id="otype"
+                  type="text"
+                  className={classnames("", {
+                    invalid: errors.otype
+                  })}
+                />
+                <label htmlFor="otype">Organization Type</label>
+                <span className="red-text">{errors.otype}</span>
+              </div>
+              <div className="input-field col s12">
+                <input
+                  onChange={this.onChange}
+                  value={this.state.address}
+                  error={errors.address}
+                  id="address"
+                  type="text"
+                  className={classnames("", {
+                    invalid: errors.address
+                  })}
+                />
+                <label htmlFor="address">Address</label>
+                <span className="red-text">{errors.address}</span>
+              </div>
+              <div className="input-field col s12">
+                <input
+                  onChange={this.onChange}
+                  value={this.state.phone}
+                  error={errors.phone}
+                  id="phone"
+                  type="text"
+                  className={classnames("", {
+                    invalid: errors.phone
+                  })}
+                />
+                <label htmlFor="phone">Phone</label>
+                <span className="red-text">{errors.phone}</span>
               </div>
               <div className="input-field col s12">
                 <input
@@ -141,7 +221,7 @@ return (
     );
   }
 }
-Register.propTypes = {
+RegisterV.propTypes = {
   registerUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
@@ -153,4 +233,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { registerUser }
-)(withRouter(Register));
+)(withRouter(RegisterV));
