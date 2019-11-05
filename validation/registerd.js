@@ -9,6 +9,7 @@ module.exports = function validateRegisterInput(data) {
   data.otype = !isEmpty(data.otype) ? data.otype : "";
   data.address = !isEmpty(data.address) ? data.address : "";
   data.phone = !isEmpty(data.phone) ? data.phone : "";
+  data.donor = !isEmpty(data.donor) ? data.donor : "";
   data.email = !isEmpty(data.email) ? data.email : "";
   data.password = !isEmpty(data.password) ? data.password : "";
   data.password2 = !isEmpty(data.password2) ? data.password2 : "";
@@ -28,6 +29,9 @@ module.exports = function validateRegisterInput(data) {
   } if (Validator.isEmpty(data.phone)) {
     errors.phone = "Phone Number field is required";
   }
+  if (Validator.isEmpty(data.donor)) {
+    errors.donor = "Phone Number field is required";
+}
 // Email checks
   if (Validator.isEmpty(data.email)) {
     errors.email = "Email field is required";
@@ -52,4 +56,3 @@ return {
     isValid: isEmpty(errors)
   };
 };
-

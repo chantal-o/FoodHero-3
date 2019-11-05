@@ -2,12 +2,13 @@ import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { registerUser } from "../../actions/authActions";
+import { registerUser } from "../../actions/authActionsd";
 import classnames from "classnames";
 class RegisterD extends Component {
   constructor() {
     super();
     this.state = {
+      donor: "Donor",
       fname: "",
       lname: "",
       cname: "",
@@ -24,7 +25,7 @@ class RegisterD extends Component {
   componentDidMount() {
     // If logged in and user navigates to Register page, should redirect them to dashboard
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push("/dashboard");
+      this.props.history.push("/donor");
     }
   }
 componentWillReceiveProps(nextProps) {
@@ -41,6 +42,7 @@ onSubmit = e => {
     e.preventDefault();
     
 const newUser = {
+      donor: this.state.donor,
       fname: this.state.fname,
       lname: this.state.lname,
       cname: this.state.cname,
@@ -158,6 +160,7 @@ return (
                 <label htmlFor="phone">Phone</label>
                 <span className="red-text">{errors.phone}</span>
               </div>
+              
               <div className="input-field col s12">
                 <input
                   onChange={this.onChange}
@@ -208,9 +211,16 @@ return (
                     letterSpacing: "1.5px",
                     marginTop: "1rem"
                   }}
+                  onChange={this.onChange}
+                  value={this.state.donor}
+                  error={errors.donor}
+                  id="donor"
+                  className={classnames("btn btn-large waves-effect waves-light hoverable blue accent-3", {
+                    invalid: errors.donor
+                  })}
                   type="submit"
-                  className="btn btn-large waves-effect waves-light hoverable blue accent-3"
                 >
+                  
                   Sign up
                 </button>
               </div>
