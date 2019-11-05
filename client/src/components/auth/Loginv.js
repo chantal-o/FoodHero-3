@@ -2,11 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { loginUser } from "../../actions/authActionsd";
-
-
-
-
+import { loginUser } from "../../actions/authActionsv";
 import classnames from "classnames";
 class Login extends Component {
   constructor() {
@@ -21,12 +17,12 @@ class Login extends Component {
   componentDidMount() {
     // If logged in and user navigates to Login page, should redirect them to dashboard
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push("/donor");
+      this.props.history.push("/volunteer");
     }
   }
 componentWillReceiveProps(nextProps) {
     if (nextProps.auth.isAuthenticated) {
-      this.props.history.push("/donor"); // push user to dashboard when they login
+      this.props.history.push("/volunteer"); // push user to dashboard when they login
     }
 if (nextProps.errors) {
       this.setState({
@@ -43,9 +39,7 @@ const userData = {
       email: this.state.email,
       password: this.state.password
     };
-this.props.loginUser(userData);
-
- // since we handle the redirect within our component, we don't need to pass in this.props.history as a parameter
+this.props.loginUser(userData); // since we handle the redirect within our component, we don't need to pass in this.props.history as a parameter
   };
 render() {
     const { errors } = this.state;
@@ -59,10 +53,10 @@ return (
             </Link>
             <div className="col s12" style={{ paddingLeft: "11.250px" }}>
               <h4>
-                <b>Donor Login</b> below
+                <b>Volunteer Login</b> below
               </h4>
               <p className="grey-text text-darken-1">
-                Don't have an account? <Link to="/roption">Register</Link>
+                Don't have an account? <Link to="/roptions">Register</Link>
               </p>
             </div>
             <form noValidate onSubmit={this.onSubmit}>
@@ -132,5 +126,5 @@ const mapStateToProps = state => ({
 });
 export default connect(
   mapStateToProps,
-  { loginUser}
+  { loginUser }
 )(Login);

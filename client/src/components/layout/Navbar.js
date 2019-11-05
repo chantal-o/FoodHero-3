@@ -18,7 +18,7 @@ class Navbar extends Component {
             </Link>
 
             <Link
-                to="/option"
+                to="/roptions"
                 style={{
                   width: "140px",
                   borderRadius: "3px",
@@ -30,7 +30,7 @@ class Navbar extends Component {
               </Link>
 
               <Link
-                to="/login"
+                to="/soptions"
                 style={{
                   width: "140px",
                   borderRadius: "3px",

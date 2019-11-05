@@ -15,41 +15,50 @@ class Landing extends Component {
               
             </p>
             <br />
-            <div className="col s4s">
+            <div className="col s2.4">
               <Link
-                to="/registerd"
+                to="/login"
                 style={{
                   width: "140px",
                   borderRadius: "3px",
                   letterSpacing: "1.5px"
                 }}
-                className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+                className="btn btn-large waves-effect waves-light hoverable #607d8b blue-grey
+                accent-3"
               >
                Donor
               </Link>
             </div>
-            <div className="col s4">
+            <div className="col s2.4">
+              
+            </div>
+            <div className="col s2.4">
               <Link
-                to="/registerr"
+                to="/loginr"
                 style={{
                   width: "140px",
                   borderRadius: "3px",
                   letterSpacing: "1.5px"
                 }}
-                className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+                className="btn btn-large waves-effect waves-light hoverable #607d8b blue-grey
+                accent-3"
               >
                 Recipient
               </Link>
             </div>
-            <div className="col s4">
+            <div className="col s2.4">
+              
+            </div>
+            <div className="col s2.4">
               <Link
-                to="/registerv"
+                to="/loginv"
                 style={{
                   width: "140px",
                   borderRadius: "3px",
                   letterSpacing: "1.5px"
                 }}
-                className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+                className="btn btn-large waves-effect waves-light hoverable #607d8b blue-grey
+                accent-3"
               >
                 Volunteer
               </Link>
