@@ -3,16 +3,19 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const keys = require("../../config/keys");
+
 // Load input validation
-const validateRegisterInput = require("../../controllers/registerv");
+const validateRegisterInput = require("../../controllers/register");
 const validateLoginInput = require("../../controllers/login");
 // Load User model
-const User = require("../../models/VUser");
+const User = require("../../models/User");
+
+
 
 // @route POST api/users/register
 // @desc Register user
 // @access Public
-router.post("/registerv", (req, res) => {
+router.post("/register", (req, res) => {
     // Form validation
   const { errors, isValid } = validateRegisterInput(req.body);
   // Check validation
@@ -24,15 +27,23 @@ router.post("/registerv", (req, res) => {
         return res.status(400).json({ email: "Email already exists" });
       } else {
         const newUser = new User({
-          volunteer: req.body.volunteer,
-          fname: req.body.fname,
-          lname: req.body.lname,
-          cname: req.body.cname,
-          otype: req.body.otype,
-          address: req.body.address,
-          phone: req.body.phone,
-          email: req.body.email,
-          password: req.body.password
+
+          usertype: req.body.usertype,
+          username: req.body.username,
+          firstname: req.body.firstname,
+          lastname: req.body.lastname,
+          organization: req.body.organization,
+          streetnum: req.body.streetnum,
+          streetname: req.body.streetname,
+          cityname: req.body.cityname,
+          province: req.body.province,
+          postalcode: req.body.postalcode,
+          mobile: req.body.mobile,
+          email:req.body.email,
+          password: req.body.password,
+          accepttc: req.body.accepttc,
+          acceptem: req.body.acceptem,
+          
         });
   // Hash password before saving in database
         bcrypt.genSalt(10, (err, salt) => {
@@ -49,8 +60,9 @@ router.post("/registerv", (req, res) => {
     });
   });
 
+  
   // @route POST api/users/login
-// @desc Login user and return JWT token
+// @desc Login user and return JWT tokens
 // @access Public
 router.post("/login", (req, res) => {
   // Form validation
@@ -60,9 +72,12 @@ const { errors, isValid } = validateLoginInput(req.body);
     return res.status(400).json(errors);
   }
 const email = req.body.email;
-  const password = req.body.password;
+const password = req.body.password;
+// const usertype = req.body.usertype;
+
+
 // Find user by email
-  User.findOne({ email }).then(user => {
+  User.findOne({ email}).then(user => {
     // Check if user exists
     if (!user) {
       return res.status(404).json({ emailnotfound: "Email not found" });
@@ -74,8 +89,12 @@ const email = req.body.email;
         // Create JWT Payload
         const payload = {
           id: user.id,
-          name: user.name
+          firstname: user.firstname,
+          usertype: user.usertype
+
         };
+
+        
 // Sign token
         jwt.sign(
           payload,
@@ -89,6 +108,7 @@ const email = req.body.email;
               token: "Bearer " + token
             });
           }
+
         );
       } else {
         return res
@@ -98,5 +118,7 @@ const email = req.body.email;
     });
   });
 });
+
+
 
 module.exports = router;

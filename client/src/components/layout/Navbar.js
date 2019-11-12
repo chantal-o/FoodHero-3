@@ -30,7 +30,7 @@ class Navbar extends Component {
               </Link>
 
               <Link
-                to="/soptions"
+                to="/login"
                 style={{
                   width: "140px",
                   borderRadius: "3px",
