@@ -2,20 +2,21 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
-import { setCurrentUser, logoutUser } from "./actions/authActionsd";
+import { setCurrentUser, logoutUser } from "./actions/authActions";
 import { Provider } from "react-redux";
 import store from "./store";
 import Navbar from "./components/layout/Navbar";
 import Landing from "./components/layout/Landing";
 import rOptions from "./components/layout/rOptions";
-import sOptions from "./components/layout/sOptions";
 import RegisterD from "./components/auth/RegisterD";
 import RegisterR from "./components/auth/RegisterR";
 import RegisterV from "./components/auth/RegisterV";
 import Login from "./components/auth/Login";
-import LoginR from "./components/auth/Loginr";
-import LoginV from "./components/auth/Loginv";
+// import LoginR from "./components/auth/LoginR";
+// import LoginV from "./components/auth/LoginV";
+
 import PrivateRoute from "./components/private-route/PrivateRoute";
+// import Registration from "./pages/Registration";
 import Donor from "./pages/Donor";
 import Recipient from "./pages/Recipient";
 import Volunteer from "./pages/Volunteer";
@@ -37,7 +38,11 @@ if (localStorage.jwtToken) {
     // Redirect to login
     window.location.href = "./login";
   }
+  
+
 }
+
+
 class App extends Component {
   render() {
     return (
@@ -47,15 +52,16 @@ class App extends Component {
             <Navbar />
             <Route exact path="/" component={Landing} />
             <Route exact path="/roptions" component={rOptions} />
-            <Route exact path="/soptions" component={sOptions} />
             <Route exact path="/registerd" component={RegisterD} />
             <Route exact path="/registerr" component={RegisterR} />
             <Route exact path="/registerv" component={RegisterV} />
             <Route exact path="/login" component={Login} />
-            <Route exact path="/loginr" component={LoginR} />
-            <Route exact path="/loginv" component={LoginV} />
+            {/* <Route exact path="/login" component={LoginR} />
+            <Route exact path="/login" component={LoginV} /> */}
 
+          
             <Switch>
+             {/* <PrivateRoute exact path="/registration" component={Registration} />   */}
               <PrivateRoute exact path="/donor" component={Donor} />
               <PrivateRoute exact path="/recipient" component={Recipient} />
               <PrivateRoute exact path="/volunteer" component={Volunteer} />

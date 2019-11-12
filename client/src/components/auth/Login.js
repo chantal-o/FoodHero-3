@@ -2,32 +2,52 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { loginUser } from "../../actions/authActionsd";
-
-
-
-
+import { loginUser } from "../../actions/authActions";
 import classnames from "classnames";
+
 class Login extends Component {
+
   constructor() {
     super();
     this.state = {
+      
       email: "",
       password: "",
+      usertype: "",
       errors: {}
-    };
+  }
   }
 
   componentDidMount() {
     // If logged in and user navigates to Login page, should redirect them to dashboard
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push("/donor");
+      this.props.history.push("./donor");
     }
   }
-componentWillReceiveProps(nextProps) {
-    if (nextProps.auth.isAuthenticated) {
-      this.props.history.push("/donor"); // push user to dashboard when they login
+    
+  
+  componentWillReceiveProps(nextProps) {
+
+    
+    if (this.setState({ usertype: "Donor"}) || nextProps.auth.isAuthenticated){
+      
+          this.props.history.push("./donor"); // push user to dashboard when they login
+
     }
+
+    if (this.setState({ usertype: "Recipient"}) || nextProps.auth.isAuthenticated){
+      
+      this.props.history.push("./recipient"); // push user to dashboard when they login
+
+  
+    } 
+    if (this.setState({ usertype: "Volunteer"}) || nextProps.auth.isAuthenticated){
+      
+    this.props.history.push("./volunteer"); // push user to dashboard when they login
+
+    }
+
+  
 if (nextProps.errors) {
       this.setState({
         errors: nextProps.errors
@@ -39,11 +59,13 @@ onChange = e => {
   };
 onSubmit = e => {
     e.preventDefault();
-const userData = {
+    console.log(this.state);
+    const userData = {
       email: this.state.email,
-      password: this.state.password
+      password: this.state.password,
+      // usertype: this.state.usertype
     };
-this.props.loginUser(userData);
+    this.props.loginUser(userData);
 
  // since we handle the redirect within our component, we don't need to pass in this.props.history as a parameter
   };
@@ -59,7 +81,7 @@ return (
             </Link>
             <div className="col s12" style={{ paddingLeft: "11.250px" }}>
               <h4>
-                <b>Donor Login</b> below
+                <b>Login</b> below
               </h4>
               <p className="grey-text text-darken-1">
                 Don't have an account? <Link to="/roption">Register</Link>
@@ -102,18 +124,26 @@ return (
               </div>
               <div className="col s12" style={{ paddingLeft: "11.250px" }}>
                 <button
+                // onChange={this.onChange}
+                // value={this.state.usertype}
+                // error={errors.usertype}
+                // id="usertype"
+                type="submit"
+                // onClick={this.props.handleOnSubmit}
+                className={classnames("btn btn-large waves-effect waves-light hoverable blue accent-3", {
+                  invalid: errors.usertype || errors.usernotfound
+                })}
                   style={{
                     width: "150px",
                     borderRadius: "3px",
                     letterSpacing: "1.5px",
                     marginTop: "1rem"
                   }}
-                  type="submit"
-                  className="btn btn-large waves-effect waves-light hoverable blue accent-3"
                 >
                   Login
                 </button>
               </div>
+             
             </form>
           </div>
         </div>
@@ -121,6 +151,10 @@ return (
     );
   }
 }
+
+
+  
+
 Login.propTypes = {
   loginUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
