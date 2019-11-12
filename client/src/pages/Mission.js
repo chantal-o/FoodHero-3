@@ -1,23 +1,34 @@
-import { Map, GoogleApiWrapper } from 'google-maps-react';
+import React, { Component } from "react";
+import API from "../utils/API";
+import { Container} from "../components/Grid";
+import MissionList from "../components/MissionList";
 
-const mapStyles = {
-    width: '100%',
-    height: '100%',
-  };
+class Mission extends Component {
+    state = {
+        missions: []
+    };
 
-render() {
+    //when this component mounts, grab all Missions that were save to the database 
+    componentDidMount() {
+        API.getMissions()
+            .then(res => this.setState({ missions: res.data }))
+            .catch(err => console.log(err))
+    }
 
 
-    return (
-        <Map
-          google={this.props.google}
-          zoom={8}
-          style={mapStyles}
-          initialCenter={{ lat: 47.444, lng: -122.176}}
-        />
-    );
-  }
+    render() {
+        return (
+            <Container fluid className="container">
+                <Container>
+                    <MissionList missions ={this.state.missions} />
+                </Container>
+            </Container>
+        )
+    }
+}
 
-  export default GoogleApiWrapper({
-    apiKey: 'TOKEN HERE'
-  })(MapContainer);
+
+
+export default Mission
+
+
