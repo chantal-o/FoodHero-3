@@ -3,10 +3,20 @@ const db = require("../models");
 
 // This file empties the Mission collection and inserts the mission below
 
-mongoose.connect(
-  process.env.MONGODB_URI ||
-  "mongodb://localhost/mission"
-);
+// mongoose.connect(
+//   process.env.MONGODB_URI ||
+//   "mongodb://localhost/mission"
+// );
+
+const db = require("../config/keys").mongoURI;
+// Connect to MongoDB
+mongoose
+  .connect(
+    db,
+    { useNewUrlParser: true }
+  )
+  .then(() => console.log("MongoDB successfully connected"))
+  .catch(err => console.log(err));
 
 const missionSeed = [
   {

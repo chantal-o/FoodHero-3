@@ -4,6 +4,8 @@ const bodyParser = require("body-parser");
 
 const passport = require("passport");
 
+
+const mission = require("./routes/api/mission");
 const users = require("./routes/api/users");
 
 
@@ -34,6 +36,8 @@ app.use(passport.initialize());
 // Passport config
 require("./config/passport")(passport);
 // Routes
+
+app.use("/api/mission", mission);
 app.use("/api/users", users);
 
 
