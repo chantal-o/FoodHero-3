@@ -20,6 +20,7 @@ import PrivateRoute from "./components/private-route/PrivateRoute";
 import Donor from "./pages/Donor";
 import Recipient from "./pages/Recipient";
 import Volunteer from "./pages/Volunteer";
+import Mission from "./pages/Mission";
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -56,8 +57,8 @@ class App extends Component {
             <Route exact path="/registerr" component={RegisterR} />
             <Route exact path="/registerv" component={RegisterV} />
             <Route exact path="/login" component={Login} />
-            {/* <Route exact path="/login" component={LoginR} />
-            <Route exact path="/login" component={LoginV} /> */}
+
+            <Route exact path="/mission" component={Mission} />
 
           
             <Switch>
