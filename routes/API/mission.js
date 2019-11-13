@@ -3,6 +3,12 @@ const router = express.Router();
 const mission = require("../../controllers/missioncontroller")
 
 
+router.post("/mission", (req,res) => {
+mission.create().then(mission => {
+console.log (mission);
+})
+}
+)
 router.get("/mission", (req, res) => {
 
     mission.findAll({}).then(missions => {
@@ -28,3 +34,5 @@ router.get("/mission/:id", (req, res) => {
             date: req.body.date
         });
     }})});
+
+    module.exports = router;

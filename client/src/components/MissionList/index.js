@@ -8,7 +8,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Title from './Title';
+// import Title from './Title';
 
 
 const useStyles = makeStyles(theme => ({
@@ -22,7 +22,7 @@ export default function MissionList() {
   const {missions}=this.props;
   return (
     <React.Fragment>
-      <Title>Missions</Title>
+      <h1>Missions</h1>
       <Table size="small">
         <TableHead>
           <TableRow>

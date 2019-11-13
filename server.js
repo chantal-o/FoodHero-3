@@ -7,6 +7,7 @@ const passport = require("passport");
 const dusers = require("./routes/api/dusers");
 const rusers = require("./routes/api/rusers");
 const vusers = require("./routes/api/vusers");
+const mission = require("./routes/api/mission");
 
 
 
@@ -38,6 +39,7 @@ require("./config/passport")(passport);
 app.use("/api/dusers", dusers);
 app.use("/api/rusers", rusers);
 app.use("/api/vusers", vusers);
+app.use("/api/mission", mission);
 
 
 
