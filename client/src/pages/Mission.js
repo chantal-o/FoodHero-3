@@ -18,7 +18,6 @@ class Mission extends Component {
 
     render() {
         return (
-          
                 <Container>
                     <MissionList missions ={this.state.missions} />
                 </Container>
