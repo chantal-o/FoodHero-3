@@ -4,10 +4,10 @@ const bodyParser = require("body-parser");
 
 const passport = require("passport");
 
-const dusers = require("./routes/api/dusers");
-const rusers = require("./routes/api/rusers");
-const vusers = require("./routes/api/vusers");
+
 const mission = require("./routes/api/mission");
+const users = require("./routes/api/users");
+
 
 
 
@@ -36,10 +36,10 @@ app.use(passport.initialize());
 // Passport config
 require("./config/passport")(passport);
 // Routes
-app.use("/api/dusers", dusers);
-app.use("/api/rusers", rusers);
-app.use("/api/vusers", vusers);
+
 app.use("/api/mission", mission);
+app.use("/api/users", users);
+
 
 
 
