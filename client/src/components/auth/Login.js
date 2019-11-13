@@ -17,43 +17,7 @@ class Login extends Component {
       errors: {}
   }
   }
-
-  componentDidMount() {
-    // If logged in and user navigates to Login page, should redirect them to dashboard
-    if (this.props.auth.isAuthenticated) {
-      this.props.history.push("./donor");
-    }
-  }
     
-  
-  componentWillReceiveProps(nextProps) {
-
-    
-    if (this.setState({ usertype: "Donor"}) || nextProps.auth.isAuthenticated){
-      
-          this.props.history.push("./donor"); // push user to dashboard when they login
-
-    }
-
-    if (this.setState({ usertype: "Recipient"}) || nextProps.auth.isAuthenticated){
-      
-      this.props.history.push("./recipient"); // push user to dashboard when they login
-
-  
-    } 
-    if (this.setState({ usertype: "Volunteer"}) || nextProps.auth.isAuthenticated){
-      
-    this.props.history.push("./volunteer"); // push user to dashboard when they login
-
-    }
-
-  
-if (nextProps.errors) {
-      this.setState({
-        errors: nextProps.errors
-      });
-    }
-  }
 onChange = e => {
     this.setState({ [e.target.id]: e.target.value });
   };

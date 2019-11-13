@@ -6,6 +6,7 @@ import {
   SET_CURRENT_USER,
   USER_LOADING
 } from "./types";
+import { decode } from "punycode";
 // Register User
 export const registerUser = (userData, history) => dispatch => {
   axios
@@ -32,16 +33,45 @@ console.log(res.data)
       setAuthToken(token);
       // Decode token to get user data
       const decoded = jwt_decode(token);
+      console.log(decoded)
       // Set current user
       dispatch(setCurrentUser(decoded));
+      redirectUser(decoded);
     })
     .catch(err =>
-      dispatch({
-        type: GET_ERRORS,
-        payload: err.response.data
-      })
+      console.log(err)
     );
 };
+
+export const redirectUser = (user) => {
+  console.log("Rerouting user " + user)
+  switch(user.usertype){
+            case "Donor":
+                console.log("to donor page")
+                window.location.href = "./donor";
+                break;
+      
+            case "Recipient":
+                console.log("to recipient page")
+
+                window.location.href = "./recipient";
+
+            
+              break;
+      
+            case "Volunteer":
+                console.log("to volunteer page")
+                window.location.href = "./volunteer";
+
+              break; 
+
+            default:
+                console.log("to login page")
+                window.location.href = "./login";
+                
+  }
+
+}
 // Set logged in user
 export const setCurrentUser = decoded => {
   return {
