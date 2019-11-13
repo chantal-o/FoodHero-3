@@ -17,9 +17,11 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function MissionList() {
+export default function MissionList(props) {
   const classes = useStyles();
-  const {missions}=this.props;
+  const {missions}= props;
+  console.log(missions);
+  console.log("==============MEOW===================")
   return (
     <React.Fragment>
       <h1>Missions</h1>
