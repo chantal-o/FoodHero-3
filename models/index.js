@@ -1,7 +1,5 @@
 module.exports = {
-    duser: require("./duser"),
-    ruser: require("./ruser"),
-    vuser: require("./vuser"),
+    user: require("./User"),
     mission: require("./mission"),
     inventory: require("./inventory")
   };

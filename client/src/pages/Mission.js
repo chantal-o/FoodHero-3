@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import API from "../utils/API";
-import { Container} from "../components/Grid";
+import API from "../utils/api";
+import Container from "../components/Container";
 import MissionList from "../components/MissionList";
 
 class Mission extends Component {
@@ -13,19 +13,18 @@ class Mission extends Component {
         API.getMissions()
             .then(res => this.setState({ missions: res.data }))
             .catch(err => console.log(err))
-    }
+    };
 
 
     render() {
         return (
-            <Container fluid className="container">
                 <Container>
                     <MissionList missions ={this.state.missions} />
                 </Container>
-            </Container>
+            
         )
     }
-}
+};
 
 
 

@@ -13,7 +13,7 @@ export default function IconLabelButtons() {
   const classes = useStyles();
 
   return (
-
+<div>
       <Button
         variant="contained"
         color="primary"
@@ -22,6 +22,6 @@ export default function IconLabelButtons() {
       >
         Submit
       </Button>
-      
+      </div>   
   );
 }
