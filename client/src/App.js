@@ -12,15 +12,13 @@ import RegisterD from "./components/auth/RegisterD";
 import RegisterR from "./components/auth/RegisterR";
 import RegisterV from "./components/auth/RegisterV";
 import Login from "./components/auth/Login";
-// import LoginR from "./components/auth/LoginR";
-// import LoginV from "./components/auth/LoginV";
-
 import PrivateRoute from "./components/private-route/PrivateRoute";
-// import Registration from "./pages/Registration";
 import Donor from "./pages/Donor";
 import Recipient from "./pages/Recipient";
 import Volunteer from "./pages/Volunteer";
 import Mission from "./pages/Mission";
+//twillio
+// import SMSForm from './SMSForm';
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -40,28 +38,7 @@ if (localStorage.jwtToken) {
     window.location.href = "./login";
   }
   
-
 }
-
-//twillio
-import './App.css';
-import SMSForm from './SMSForm';
-
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-
-          <SMSForm />
-        </header>
-      </div>
-    );
-  
-  }
-}
-
 
 class App extends Component {
   render() {
@@ -70,6 +47,8 @@ class App extends Component {
         <Router>
           <div className="App">
             <Navbar />
+            {/* <Route exact path="/" component={SMSForm}  /> */}
+
             <Route exact path="/" component={Landing} />
             <Route exact path="/roptions" component={rOptions} />
             <Route exact path="/registerd" component={RegisterD} />
@@ -87,7 +66,8 @@ class App extends Component {
               <PrivateRoute exact path="/volunteer" component={Volunteer} />
             </Switch>
           </div>
-        </Router>
+
+z        </Router>
       </Provider>
     );
   }

@@ -3,13 +3,9 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 const pino = require('express-pino-logger')();
-const client = require('twilio')(
-  process.env.TWILIO_ACCOUT_SID,
-  process.env.TWILIO_AUTH_TOKEN)
-
 const mission = require("./routes/api/mission");
 const users = require("./routes/api/users");
-
+// const twilio = require("./routes/api/twilio");
 
 
 
@@ -22,6 +18,9 @@ app.use(
   })
 );
 app.use(bodyParser.json());
+app.use(pino);
+
+//twillio
 // DB Config
 const db = require("./config/keys").mongoURI;
 // Connect to MongoDB
@@ -39,31 +38,59 @@ app.use(passport.initialize());
 require("./config/passport")(passport);
 // Routes
 
+
+
+
+
 app.use("/api/mission", mission);
 app.use("/api/users", users);
+// app.use("/api/greeting", twilio);
+// app.use("/api/messages", twilio);
 
 
-//twillio
 
+require('dotenv').config();
+const client = require('twilio')(
+    process.env.TWILIO_ACCOUT_SID,
+    process.env.TWILIO_AUTH_TOKEN)
+    //twillio
+// app.get('/api/greeting', (req, res) => {
+//     const name = req.query.name || 'World';
+//     res.setHeader('Content-Type', 'application/json');
+//     res.send(JSON.stringify({ greeting: `Hello ${name}!` }));
+//   });
+//   app.post('/api/messages', (req, res) => {
+  
+//   });
 
-const app = express();
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-app.use(pino);
+// app.post('/api/messages', (req, res) => {
+//     res.header('Content-Type', 'application/json');
+  
+//   });
+//   app.post('/api/messages', (req, res) => {
+//     res.header('Content-Type', 'application/json');
+//     client.messages
+//       .create({
+//         from: process.env.TWILIO_PHONE_NUMBER,
+//         to: req.body.to,
+//         body: req.body.body
+//       })
+//       .then(() => {
+//         res.send(JSON.stringify({ success: true }));
+//       })
+//       .catch(err => {
+//         console.log(err);
+//         res.send(JSON.stringify({ success: false }));
+//       });
+//   });
+  
 
 app.get('/api/greeting', (req, res) => {
   const name = req.query.name || 'World';
   res.setHeader('Content-Type', 'application/json');
   res.send(JSON.stringify({ greeting: `Hello ${name}!` }));
 });
-app.post('/api/messages', (req, res) => {
 
-});
-
-app.post('/api/messages', (req, res) => {
-  res.header('Content-Type', 'application/json');
-
-});
 app.post('/api/messages', (req, res) => {
   res.header('Content-Type', 'application/json');
   client.messages
