@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './style.css';
-
 class SMSForm extends Component {
   constructor(props) {
     super(props);
