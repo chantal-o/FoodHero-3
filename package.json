@@ -16,8 +16,8 @@
     "google-maps-react": "^2.0.2",
     "is-empty": "^1.2.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.7.10",
     "materialize-css": "^1.0.0",
+    "mongoose": "^5.7.10",
     "morgan": "^1.9.1",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
@@ -26,6 +26,7 @@
     "react-materialize": "^3.4.1",
     "react-scripts": "3.2.0",
     "serve-favicon": "^2.5.0",
+    "twilio": "^3.37.1",
     "validator": "^12.0.0"
   },
   "scripts": {
