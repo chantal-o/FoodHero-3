@@ -8,21 +8,23 @@ import API from "../utils/api";
 
 class Donation extends Component {
   state = {
-    donations:[]
+    donations:[],
+    usertype: "Recipient"
   };
 
   componentDidMount() {
     API.getDonations()
-      .then(res => this.setState({ donations: res.data }))
-      .catch(err => console.log(err))
+    .then(res => this.setState({ donations: res.data }))
+    .catch(err => console.log(err))
   };
-
+  
   onLogoutClick = e => {
     e.preventDefault();
     this.props.logoutUser();
   };
-
+  
   render() {
+    console.log(this.state.usertype);
     return (
       <div className="container">
         <div className="row">
