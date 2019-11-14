@@ -2,26 +2,43 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../actions/authActions";
-class Dashboard extends Component {
+import Container from "../components/Container";
+import DonationList from "../components/DonationList";
+import API from "../utils/api";
+
+class Donation extends Component {
+  state = {
+    donations:[]
+  };
+
+  componentDidMount() {
+    API.getDonations()
+      .then(res => this.setState({ donations: res.data }))
+      .catch(err => console.log(err))
+  };
+
   onLogoutClick = e => {
     e.preventDefault();
     this.props.logoutUser();
   };
-render() {
-    // const { user } = this.props.auth;
-    const { user } = this.props.auth;
 
-return (
-      <div style={{ height: "75vh" }} className="container valign-wrapper">
+  render() {
+    return (
+      <div className="container">
         <div className="row">
-          <div className="col s12 center-align">
-            <h4>
-            <b>Hey there,</b> {user.firstname}
-              <p className="flow-text grey-text text-darken-1">
-              You are logged in as  {user.usertype}
-                <span style={{ fontFamily: "monospace" }}></span>
-              </p>
-            </h4>
+          <div className="col s8 offset-s2">
+            <h4>These Items are Currently Available for Delivery!</h4>
+
+            {/* Food Table */}
+            <Container>
+              <DonationList donations={this.state.donations} />
+            </Container>
+          </div>
+        </div>
+        
+        {/* Logout Button */}
+        <div className="row">
+          <div className="col s8 offset-s2">
             <button
               style={{
                 width: "150px",
@@ -34,20 +51,24 @@ return (
             >
               Logout
             </button>
+
           </div>
         </div>
       </div>
     );
   }
 }
-Dashboard.propTypes = {
+
+Donation.propTypes = {
   logoutUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired
+  // auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired
 };
 const mapStateToProps = state => ({
-  auth: state.auth
+  // auth: state.auth,
+  errors: state.errors
 });
 export default connect(
   mapStateToProps,
   { logoutUser }
-)(Dashboard);
+)(Donation);
