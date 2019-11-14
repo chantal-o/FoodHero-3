@@ -2,26 +2,27 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../actions/authActions";
-import classnames from "classnames";
+import Container from "../components/Container";
+import DonationList from "../components/DonationList";
+import API from "../utils/api";
 
-class Dashboard extends Component {
+class Donation extends Component {
+  state = {
+    donations:[]
+  };
+
+  componentDidMount() {
+    API.getDonations()
+      .then(res => this.setState({ donations: res.data }))
+      .catch(err => console.log(err))
+  };
+
   onLogoutClick = e => {
     e.preventDefault();
     this.props.logoutUser();
   };
 
-  constructor() {
-    super();
-    this.state = {
-      usertype: "Recipient",
-      errors: {}
-    };
-  }
-
   render() {
-    // const { user } = this.props.auth;
-    const { errors } = this.state;
-
     return (
       <div className="container">
         <div className="row">
@@ -29,6 +30,9 @@ class Dashboard extends Component {
             <h4>These Items are Currently Available for Delivery!</h4>
 
             {/* Food Table */}
+            <Container>
+              <DonationList food={this.state.donations} />
+            </Container>
 
             {/* Logout Button */}
             <button
@@ -51,7 +55,7 @@ class Dashboard extends Component {
   }
 }
 
-Dashboard.propTypes = {
+Donation.propTypes = {
   logoutUser: PropTypes.func.isRequired,
   // auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
@@ -63,4 +67,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { logoutUser }
-)(Dashboard);
+)(Donation);
