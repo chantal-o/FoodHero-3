@@ -62,7 +62,7 @@ class App extends Component {
             <Switch>
              {/* <PrivateRoute exact path="/registration" component={Registration} />   */}
               <Route exact path="/donor" component={Donor} />
-              <PrivateRoute exact path="/recipient" component={Recipient} />
+              <Route exact path="/recipient" component={Recipient} />
               <PrivateRoute exact path="/volunteer" component={Volunteer} />
             </Switch>
           </div>
