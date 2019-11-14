@@ -17,14 +17,14 @@ import TableRow from '@material-ui/core/TableRow';
 //   },
 // }));
 
-export default function MissionList(props) {
+export default function DonationList(props) {
   // const classes = useStyles();
-  const {missions}= props;
-  console.log(missions);
+  const {donations}= props;
+  console.log(donations);
   console.log("==============MEOW===================")
   return (
     <React.Fragment>
-      <h1>Missions</h1>
+      <h1>Available Donations</h1>
       <Table size="small">
         <TableHead>
           <TableRow>
@@ -32,21 +32,19 @@ export default function MissionList(props) {
             <TableCell>Item Name</TableCell>
             <TableCell>Quantity</TableCell>
             <TableCell>Description</TableCell>
-            <TableCell>Donor Name</TableCell>
-            <TableCell>Volunteer Name</TableCell>
-            <TableCell>Recipient Name</TableCell>
+            <TableCell>Shelf Life</TableCell>
+            <TableCell>Pickup Time</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {missions.map(row => (
+          {donations.map(row => (
             <TableRow key={row.id}>
               <TableCell>{row.date}</TableCell>
               <TableCell>{row.itemname}</TableCell>
-              <TableCell>{row.quantity}</TableCell>
+              <TableCell>{row.numberofunits}</TableCell>
               <TableCell>{row.description}</TableCell>
-              <TableCell>{row.donorname}</TableCell>
-              <TableCell>{row.volunteername}</TableCell>
-              <TableCell>{row.recipientname}</TableCell>
+              <TableCell>{row.shelflife}</TableCell>
+              <TableCell>{row.pickuptime}</TableCell>
             </TableRow>
           ))}
         </TableBody>

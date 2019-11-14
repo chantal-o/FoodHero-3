@@ -16,6 +16,14 @@ export default {
         return axios.get("/api/mission/" + id);
     },
 
+    getDonations: function () {
+        return axios.get("/api/donations")
+    },
+
+    getDonation: function (id) {
+        return axios.get("/api/donations" + id)
+    }
+
     // // Saves a book to the database
     // saveBook: function (savedBooks) {
     //     return axios.post("/api/books", savedBooks);

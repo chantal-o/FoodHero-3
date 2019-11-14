@@ -31,10 +31,14 @@ class Donation extends Component {
 
             {/* Food Table */}
             <Container>
-              <DonationList food={this.state.donations} />
+              <DonationList donations={this.state.donations} />
             </Container>
-
-            {/* Logout Button */}
+          </div>
+        </div>
+        
+        {/* Logout Button */}
+        <div className="row">
+          <div className="col s8 offset-s2">
             <button
               style={{
                 width: "150px",
