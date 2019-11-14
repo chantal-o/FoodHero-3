@@ -5,36 +5,19 @@ import { logoutUser } from "../actions/authActions";
 import classnames from "classnames";
 
 class Dashboard extends Component {
+  state = {
+    usertype: "Donor",
+    errors: {}
+  };
+
   onLogoutClick = e => {
     e.preventDefault();
     this.props.logoutUser();
   };
 
-  constructor() {
-    super();
-    this.state = {
-      usertype: "Donor",
-      username: "",
-      firstname: "",
-      lastname: "",
-      organization: "",
-      streetnum: "",
-      streetname: "",
-      cityname: "",
-      province: "",
-      postalcode: "",
-      mobile: "",
-      email: "",
-      password: "",
-      password2: "",
-      accepttc: "accepttc",
-      acceptem: "acceptem",
-      errors: {}
-    };
-  }
-
   render() {
   const { errors } = this.state;
+  console.log(this.state);
   // const { user } = this.props.auth;
 
   return (

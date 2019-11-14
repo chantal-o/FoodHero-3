@@ -46,32 +46,28 @@ console.log(res.data)
 export const redirectUser = (user) => {
   console.log("Rerouting user " + user)
   switch(user.usertype){
+
             case "Donor":
                 console.log("to donor page")
                 window.location.href = "./donor";
                 break;
-      
+
             case "Recipient":
                 console.log("to recipient page")
-
                 window.location.href = "./recipient";
-
-            
               break;
       
             case "Volunteer":
                 console.log("to volunteer page")
                 window.location.href = "./volunteer";
-
               break; 
 
             default:
-                console.log("to login page")
+                console.log("to login page");
                 window.location.href = "./login";
-                
   }
-
 }
+
 // Set logged in user
 export const setCurrentUser = decoded => {
   return {
