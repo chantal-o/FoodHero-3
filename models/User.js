@@ -7,7 +7,7 @@ const UserSchema = new Schema({
  firstname: { type: String },
  lastname: { type: String },
  organization: {type: String },
- streetnum: { type: String },
+//  streetnum: { type: Number },
  streetname: {type: String },
  cityname: {type: String },
  province: {type: String },

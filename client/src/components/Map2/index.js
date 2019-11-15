@@ -1,7 +1,7 @@
 /* global google */
 import React from "react";
 import { compose, withProps, lifecycle } from "recompose"
-import { withScriptjs, withGoogleMap, GoogleMap, Marker, DirectionsRenderer} from "react-google-maps"
+import { withScriptjs, withGoogleMap, GoogleMap,DirectionsRenderer} from "react-google-maps"
 
 
 const MapWithADirectionsRenderer = compose(

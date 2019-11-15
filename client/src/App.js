@@ -17,6 +17,8 @@ import Donor from "./pages/Donor";
 import Recipient from "./pages/Recipient";
 import Volunteer from "./pages/Volunteer";
 import Mission from "./pages/Mission";
+import Profile from "./pages/Profile";
+
 //twillio
 //import SMSForm from './SMSForm';
 
@@ -41,65 +43,39 @@ if (localStorage.jwtToken) {
 
 class App extends Component {
   render() {
-    // const AuthenticatedRoutes = () => {
-//       return (
-//         <div id="container">
-//           <Nav />
-//             <Switch>
-//               {/* <PrivateRoute exact path="/registration" component={Registration} />   */}
-//               {/* REMEMBER!!!!!! - Change to PrivateRoute */}
-//               <Route exact path="/donor" component={Donor} />
-//               <Route exact path="/recipient" component={Recipient} />
-//               <Route exact path="/volunteer" component={Volunteer} />
-//               <Route exact path="/mission" component={Mission} />
-//             </Switch>
-//         </div>
-//       )
-//     }
-
-//     return (
-//       <Provider store={store}>
-//         <Router className="App">
-//             <Switch>
-//               <Route exact path="/" component={Landing} />
-//               <Route exact path="/roptions" component={rOptions} />
-//               <Route exact path="/registerd" component={RegisterD} />
-//               <Route exact path="/registerr" component={RegisterR} />
-//               <Route exact path="/registerv" component={RegisterV} />
-//               <Route exact path="/login" component={Login} />
-//               <Route component={AuthenticatedRoutes} />
-//             </Switch>
-//         </Router>
-//       </Provider>
-//     )
-//   }
-// }
-
-    return (
-      <Provider store={store}>
-        <Router>
-          <div className="App">
-            <Nav />
-            {/* <Route exact path="/" component={SMSForm}  /> */}
-
-            <Route exact path="/" component={Landing} />
-            <Route exact path="/roptions" component={rOptions} />
-            <Route exact path="/registerd" component={RegisterD} />
-            <Route exact path="/registerr" component={RegisterR} />
-            <Route exact path="/registerv" component={RegisterV} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/mission" component={Mission} />
+    const AuthenticatedRoutes = () => {
+      return (
+        <div id="container">
+          <Nav />
             <Switch>
-             {/* <PrivateRoute exact path="/registration" component={Registration} />   */}
               <PrivateRoute exact path="/donor" component={Donor} />
               <PrivateRoute exact path="/recipient" component={Recipient} />
               <PrivateRoute exact path="/volunteer" component={Volunteer} />
-            </Switch>
-          </div>
+              <PrivateRoute exact path="/mission" component={Mission} />
+              <PrivateRoute exact path="/profile" component={Profile} />
 
+
+            </Switch>
+        </div>
+      )
+    }
+
+    return (
+      <Provider store={store}>
+        <Router className="App">
+            <Switch>
+              <Route exact path="/" component={Landing} />
+              <Route exact path="/roptions" component={rOptions} />
+              <Route exact path="/registerd" component={RegisterD} />
+              <Route exact path="/registerr" component={RegisterR} />
+              <Route exact path="/registerv" component={RegisterV} />
+              <Route exact path="/login" component={Login} />
+              <Route component={AuthenticatedRoutes} />
+            </Switch>
         </Router>
       </Provider>
-    );
+    )
   }
 }
+
 export default App;

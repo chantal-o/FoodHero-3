@@ -33,7 +33,7 @@ router.post("/register", (req, res) => {
           firstname: req.body.firstname,
           lastname: req.body.lastname,
           organization: req.body.organization,
-          streetnum: req.body.streetnum,
+          // streetnum: req.body.streetnum,
           streetname: req.body.streetname,
           cityname: req.body.cityname,
           province: req.body.province,
@@ -89,9 +89,18 @@ const password = req.body.password;
         // Create JWT Payload
         const payload = {
           id: user.id,
+          usertype: user.usertype,
+          username: user.username,
           firstname: user.firstname,
-          usertype: user.usertype
-
+          lastname: user.lastname,
+          organization: user.organization,
+          // streetnum: user.streetnum,
+          streetname: user.streetname,
+          cityname: user.cityname,
+          province: user.province,
+          postalcode: user.postalcode,
+          mobile: user.mobile,
+          email:user.email
         };
 
         
