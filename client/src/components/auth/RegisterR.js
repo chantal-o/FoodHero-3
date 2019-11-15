@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { registerUser } from "../../actions/authActions";
 import classnames from "classnames";
+import Terms from "../termsandservices/term";
+
 class RegisterD extends Component {
   constructor() {
     super();
@@ -13,7 +15,6 @@ class RegisterD extends Component {
       firstname: "",
       lastname: "",
       organization: "",
-      streetnum: "",
       streetname: "",
       cityname: "",
       province: "",
@@ -54,7 +55,6 @@ const newUser = {
       firstname: this.state.firstname,
       lastname: this.state.lastname,
       organization: this.state.organization,
-      streetnum: this.state.streetnum,
       streetname: this.state.streetname,
       cityname: this.state.cityname,
       province: this.state.province,
@@ -145,20 +145,7 @@ return (
                 <label htmlFor="organization">Organization Name</label>
                 <span className="red-text">{errors.organization}</span>
               </div>
-              <div className="input-field col s12">
-                <input
-                  onChange={this.onChange}
-                  value={this.state.streetnum}
-                  error={errors.streetnum}
-                  id="streetnum"
-                  type="text"
-                  className={classnames("", {
-                    invalid: errors.streetnum
-                  })}
-                />
-                <label htmlFor="streetnum">Street Number</label>
-                <span className="red-text">{errors.streetnum}</span>
-              </div>
+              
               <div className="input-field col s12">
                 <input
                   onChange={this.onChange}
@@ -276,6 +263,8 @@ return (
               
               <div>
               <label htmlFor="accepttc">
+              <Terms></Terms>
+
                    <input 
                    onChange={this.onChange}
                   value={this.state.accepttc}
@@ -290,22 +279,7 @@ return (
                 </label>
 
               </div>
-              <div>
-              <label htmlFor="acceptem">
-                   <input 
-                   onChange={this.onChange}
-                  value={this.state.acceptem}
-                  error={errors.acceptem}
-                  id="acceptem"
-                  type="checkbox" 
-                  className={classnames("", {
-                    invalid: errors.acceptem
-                  })}
-                  />
-                   <span>Accept To Rec</span>
-                   </label>
-
-              </div>
+             
               <div className="col s12" style={{ paddingLeft: "11.250px" }}>
                 <button
                   style={{
