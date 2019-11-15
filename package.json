@@ -17,6 +17,7 @@
     "express": "^4.17.1",
     "express-pino-logger": "^4.0.0",
     "google-maps-react": "^2.0.2",
+    "http-proxy-middleware": "^0.20.0",
     "is-empty": "^1.2.0",
     "jsonwebtoken": "^8.5.1",
     "materialize-css": "^1.0.0",
