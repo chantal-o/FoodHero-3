@@ -26,10 +26,10 @@ class Nav extends Component {
             <Link
                 // PLEASE NOTE: NOT DONE
                 // to={redirectUser}
-                to="/"
+                to="/Mission"
                 className="btn btn-med waves-effect waves-light hoverable blue accent-3"
             >
-                Action Page
+                Missions Page
             </Link>
             <Link
                 // PLEASE NOTE: NOT DONE
