@@ -10,10 +10,10 @@ class Dashboard extends Component {
     errors: {}
   };
 
-  onLogoutClick = e => {
-    e.preventDefault();
-    this.props.logoutUser();
-  };
+  // onLogoutClick = e => {
+  //   e.preventDefault();
+  //   this.props.logoutUser();
+  // };
 
   render() {
   const { errors } = this.state;
@@ -118,7 +118,7 @@ class Dashboard extends Component {
           </form>
 
           {/* Logout Button */}
-          <button
+          {/* <button
             style={{
               width: "150px",
               borderRadius: "3px",
@@ -129,7 +129,7 @@ class Dashboard extends Component {
             className="btn btn-large waves-effect waves-light hoverable blue accent-3"
           >
             Logout
-          </button>
+          </button> */}
             
         </div>
       </div>
