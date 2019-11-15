@@ -18,10 +18,10 @@ class Donation extends Component {
     .catch(err => console.log(err))
   };
   
-  onLogoutClick = e => {
-    e.preventDefault();
-    this.props.logoutUser();
-  };
+  // onLogoutClick = e => {
+  //   e.preventDefault();
+  //   this.props.logoutUser();
+  // };
   
   render() {
     console.log(this.state.usertype);
