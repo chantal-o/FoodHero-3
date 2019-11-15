@@ -18,10 +18,10 @@ class Donation extends Component {
     .catch(err => console.log(err))
   };
   
-  onLogoutClick = e => {
-    e.preventDefault();
-    this.props.logoutUser();
-  };
+  // onLogoutClick = e => {
+  //   e.preventDefault();
+  //   this.props.logoutUser();
+  // };
   
   render() {
     console.log(this.state.usertype);
@@ -39,7 +39,7 @@ class Donation extends Component {
         </div>
         
         {/* Logout Button */}
-        <div className="row">
+        {/* <div className="row">
           <div className="col s8 offset-s2">
             <button
               style={{
@@ -55,7 +55,7 @@ class Donation extends Component {
             </button>
 
           </div>
-        </div>
+        </div> */}
       </div>
     );
   }
