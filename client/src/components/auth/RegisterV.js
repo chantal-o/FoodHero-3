@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { registerUser } from "../../actions/authActions";
 import classnames from "classnames";
+import Terms from "../termsandservices/term";
+
 class RegisterD extends Component {
   constructor() {
     super();
@@ -14,7 +16,6 @@ class RegisterD extends Component {
       lastname: "",
       organization: "",
       area:"",
-      streetnum: "",
       streetname: "",
       cityname: "",
       province: "",
@@ -56,7 +57,6 @@ const newUser = {
       lastname: this.state.lastname,
       organization: this.state.organization,
       area:this.state.area,
-      streetnum: this.state.streetnum,
       streetname: this.state.streetname,
       cityname: this.state.cityname,
       province: this.state.province,
@@ -292,6 +292,8 @@ return (
               
               <div>
               <label htmlFor="accepttc">
+              <Terms></Terms>
+
                    <input 
                    onChange={this.onChange}
                   value={this.state.accepttc}
@@ -306,22 +308,7 @@ return (
                 </label>
 
               </div>
-              <div>
-              <label htmlFor="acceptem">
-                   <input 
-                   onChange={this.onChange}
-                  value={this.state.acceptem}
-                  error={errors.acceptem}
-                  id="acceptem"
-                  type="checkbox" 
-                  className={classnames("", {
-                    invalid: errors.acceptem
-                  })}
-                  />
-                   <span>Accept To Rec</span>
-                   </label>
-
-              </div>
+             
               <div className="col s12" style={{ paddingLeft: "11.250px" }}>
                 <button
                   style={{
