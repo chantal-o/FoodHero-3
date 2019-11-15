@@ -13,6 +13,7 @@ class RegisterD extends Component {
       firstname: "",
       lastname: "",
       organization: "",
+      area:"",
       streetnum: "",
       streetname: "",
       cityname: "",
@@ -54,6 +55,7 @@ const newUser = {
       firstname: this.state.firstname,
       lastname: this.state.lastname,
       organization: this.state.organization,
+      area:this.state.area,
       streetnum: this.state.streetnum,
       streetname: this.state.streetname,
       cityname: this.state.cityname,
@@ -144,6 +146,20 @@ return (
                 />
                 <label htmlFor="organization">Organization Name</label>
                 <span className="red-text">{errors.organization}</span>
+              </div>
+              <div className="input-field col s12 ">
+                <input
+                  onChange={this.onChange}
+                  value={this.state.area}
+                  error={errors.area}
+                  id="area"
+                  type="text"
+                  className={classnames("", {
+                    invalid: errors.area
+                  })}
+                />
+                <label htmlFor="area">Area</label>
+                <span className="red-text">{errors.streetnum}</span>
               </div>
               <div className="input-field col s12">
                 <input

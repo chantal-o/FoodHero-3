@@ -6,11 +6,10 @@ class Landing extends Component {
       <div style={{ height: "75vh" }} className="container valign-wrapper">
         <div className="row">
           <div className="col s12 center-align">
-            {/* <h4>
-              <b>Build</b> a login/auth app with the{" "}
-              <span style={{ fontFamily: "monospace" }}>MERN</span> stack from
-              scratch
-            </h4> */}
+          <Link to="/" className="btn-flat waves-effect">
+              <i className="material-icons left">keyboard_backspace</i> Back to
+              Home
+            </Link>
             <p className="flow-text grey-text text-darken-1">
               
             </p>

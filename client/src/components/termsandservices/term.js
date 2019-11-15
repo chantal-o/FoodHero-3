@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 
 var appElement = document.getElementById('example');
 
 Modal.setAppElement(appElement);
 
-class App extends Component {
+class Terms extends Component {
   constructor(props) {
     super(props);
     this.state = { modalIsOpen: false };
@@ -33,7 +33,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <button type="button" className="btn btn-primary" onClick={this.openModal}>Open Modal</button>
+        <button type="button" className="btn btn-primary" onClick={this.openModal}>Terms & Conditions</button>
         <Modal
           className="Modal__Bootstrap modal-dialog"
           closeTimeoutMS={150}
@@ -42,14 +42,12 @@ class App extends Component {
         >
           <div className="modal-content">
             <div className="modal-header">
-              <h4 className="modal-title">Modal title</h4>
               <button type="button" className="close" onClick={this.handleModalCloseRequest}>
                 <span aria-hidden="true">&times;</span>
                 <span className="sr-only">Close</span>
               </button>
             </div>
             <div className="modal-body">
-              <h4>Really long content...</h4>
               <p>Terms and Conditions
 Welcome to Foodhero!
 
@@ -80,8 +78,9 @@ Parts of this website offer an opportunity for users to post and exchange opinio
 Food Hero reserves the right to monitor all Comments and to remove any Comments which can be considered inappropriate, offensive or causes breach of these Terms and Conditions.</p>
             </div>
             <div className="modal-footer">
-              <button type="button" className="btn btn-secondary" onClick={this.handleModalCloseRequest}>Close</button>
-              <button type="button" className="btn btn-primary" onClick={this.handleSaveClicked}>Save changes</button>
+              <button type="button" className="btn btn-secondary" 
+              
+              onClick={this.handleModalCloseRequest}>Accept</button>
             </div>
           </div>
         </Modal>
@@ -90,4 +89,5 @@ Food Hero reserves the right to monitor all Comments and to remove any Comments 
   }
 }
 
-ReactDOM.render(<App/>, appElement);
+// ReactDOM.render(<Terms/>, appElement);
+export default Terms
