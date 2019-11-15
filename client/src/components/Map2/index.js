@@ -16,15 +16,18 @@ const MapWithADirectionsRenderer = compose(
   lifecycle({
     componentDidMount() {
       const DirectionsService = new google.maps.DirectionsService();
-
+      
       DirectionsService.route({
-        origin: new google.maps.LatLng(41.8507300, -87.6512600),
-        destination: new google.maps.LatLng(41.8525800, -87.6514100),
+        origin: new google.maps.LatLng(43.8507300, -79.6512600),
+        destination: new google.maps.LatLng(43.8525800, -79.6514100),
+        waypoints: new google.maps.LatLng(43.8525925, -79.6622222),
         travelMode: google.maps.TravelMode.DRIVING,
       }, (result, status) => {
         if (status === google.maps.DirectionsStatus.OK) {
           this.setState({
             directions: result,
+            // lat: lat,
+            // long: lng,
           });
         } else {
           console.error(`error fetching directions ${result}`);
@@ -32,9 +35,33 @@ const MapWithADirectionsRenderer = compose(
       });
     }
   })
-)(props =>
+)(props => 
+
+    // if (navigator.geolocation) {
+
+            // infoWindow.setPosition(pos);
+            // infoWindow.setContent('Location found.');
+            // infoWindow.open(map);
+            // map.setCenter(pos);
+        // }, function() {
+        //     handleLocationError(true, infoWindow, map.getCenter());
+        // });
+        // } else {
+        // // Browser doesn't support Geolocation
+        // handleLocationError(false, infoWindow, map.getCenter());
+        // }
+
+    // function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+    //     infoWindow.setPosition(pos);
+    //     infoWindow.setContent(browserHasGeolocation ?
+    //                         'Error: The Geolocation service failed.' :
+    //                         'Error: Your browser doesn\'t support geolocation.');
+    //     infoWindow.open(map);
+    
+
   <GoogleMap
     defaultZoom={7}
+    defaultCenter={new google.maps.LatLng(props.pos.coords.latitude,props.pos.coords.longitude)}
   >
     {props.directions && <DirectionsRenderer directions={props.directions} />}
   </GoogleMap>
