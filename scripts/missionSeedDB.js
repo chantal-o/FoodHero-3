@@ -26,6 +26,14 @@ const missionSeed = [
     donorname: "Longos",
     volunteername: "Joey Kabigting",
     recipientname: "Good Shepherd Soup Kitchen",
+  },
+  {
+    itemname: "Tomatoes",
+    quantity: 10,
+    description: "10 bushels of 30 each",  
+    donorname: "Loblaws",
+    volunteername: "Chantal",
+    recipientname: "Scott Mission"
   }
 ];
 

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import API from "../utils/api";
 import Container from "../components/Container";
-import MissionList from "../components/MissionList";
+import YourMission from "../components/YourMission";
 import Map2 from "../components/Map2";
 
 
@@ -17,6 +17,7 @@ class Mission extends Component {
             .then(res => this.setState({ missions: res.data }))
             .catch(err => console.log(err))
         this.getCoordinates();
+
        
                 
     };
@@ -29,10 +30,11 @@ class Mission extends Component {
     }
 
 
+
     render() {
         return (
                 <Container>
-                    <MissionList missions ={this.state.missions} />
+                    <YourMission missions ={this.state.missions} />
                     <Map2 pos ={this.state.pos}/>
                 </Container>
             
