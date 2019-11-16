@@ -4,6 +4,6 @@ const users = require("../../routes/API/users");
 
 module.exports = function(app) {
     app.use(
-      proxy([("/api/mission", users)], { target: "http://localhost:5000" })
+      proxy(["/api/users", users], { target: "http://localhost:5000" })
     );
   };
