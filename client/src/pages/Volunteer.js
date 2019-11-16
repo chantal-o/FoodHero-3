@@ -5,6 +5,8 @@ import { logoutUser } from "../actions/authActions";
 import Container from "../components/Container";
 import YourMission from "../components/YourMission";
 import API from "../utils/api";
+import Button from "../components/Button";
+import { Link, withRouter } from "react-router-dom";
 
 class Mission extends Component {
   state = {
@@ -28,6 +30,11 @@ class Mission extends Component {
             {/* Mission Table */}
             <Container>
               <YourMission missions={this.state.missions} />
+              <Button>
+              <Link to="/mission" className="btn-flat waves-effect">
+              <i className="material-icons left">keyboard_backspace</i> To Mission
+            </Link>
+              </Button>
             </Container>
           </div>
         </div>
@@ -48,4 +55,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { logoutUser }
-)(Mission);
+)(withRouter(Mission));
