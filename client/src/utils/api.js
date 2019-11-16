@@ -16,13 +16,13 @@ export default {
         return axios.get("/api/mission/" + id);
     },
 
-    getDonations: function () {
-        return axios.get("/api/donations")
-    },
+    getInventory: function () {
+        return axios.get("/api/inventory")
+    }
 
-    getDonation: function (id) {
-        return axios.get("/api/donations/" + id)
-    },
+    // getInventory: function (id) {
+    //     return axios.get("/api/inventory/" + id)
+    // },
 
     // getMissions: function () {
     //     return axios.get("/api/mission");
