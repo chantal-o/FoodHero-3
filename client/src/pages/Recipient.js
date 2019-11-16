@@ -8,12 +8,12 @@ import API from "../utils/api";
 
 class Donation extends Component {
   state = {
-    donations:[],
+    donations: [],
     usertype: "Recipient"
   };
 
   componentDidMount() {
-    API.getDonations()
+    API.getInventory()
     .then(res => this.setState({ donations: res.data }))
     .catch(err => console.log(err))
   };

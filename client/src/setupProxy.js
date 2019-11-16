@@ -12,6 +12,6 @@ module.exports = function(app) {
     );
 
     app.use(
-      proxy(["/api/donations"], { target: "http://localhost:5000"})
+      proxy(["/api/inventory"], { target: "http://localhost:5000" })
     );
   };

@@ -15,4 +15,4 @@ router.get("/:id", (req, res) => {
 
   inventory.findById(req, res)});
 
-    module.exports = router;
+    module.exports = router; 

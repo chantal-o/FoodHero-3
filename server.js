@@ -5,6 +5,7 @@ const passport = require("passport");
 const pino = require('express-pino-logger')();
 const mission = require("./routes/api/mission");
 const users = require("./routes/api/users");
+const inventory = require("./routes/api/inventory");
 // const twilio = require("./routes/api/twilio");
 
 
@@ -72,6 +73,7 @@ require("./config/passport")(passport);
 
 app.use("/api/mission", mission);
 app.use("/api/users", users);
+app.use("/api/inventory", inventory);
 // app.use("/api/messages", twilio);
 
 
