@@ -33,10 +33,17 @@ class Mission extends Component {
 
     render() {
         return (
-                <Container>
-                    <YourMission missions ={this.state.missions} />
-                    <Map2 pos ={this.state.pos}/>
-                </Container>
+            <div className="container">
+                <div className="row">
+                    <div className="col s8 offset-s2">
+                        <h3 className="center">Current Mission:</h3>
+                        <Container>
+                            <YourMission missions ={this.state.missions} />
+                            <Map2 pos ={this.state.pos}/>
+                        </Container>
+                    </div>
+                </div>
+            </div>
             
         )
     }

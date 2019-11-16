@@ -22,7 +22,11 @@ export default {
 
     getDonation: function (id) {
         return axios.get("/api/donations" + id)
-    }
+    },
+
+    // getMissions: function () {
+    //     return axios.get("/api/mission");
+    // },
 
     // // Saves a book to the database
     // saveBook: function (savedBooks) {
