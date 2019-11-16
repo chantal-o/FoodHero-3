@@ -2,52 +2,50 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../actions/authActions";
-class Dashboard extends Component {
-  // onLogoutClick = e => {
-  //   e.preventDefault();
-  //   this.props.logoutUser();
-  // };
-render() {
-    // const { user } = this.props.auth;
-    const { user } = this.props.auth;
+import Container from "../components/Container";
+import MissionList from "../components/MissionList";
+import API from "../utils/api";
 
-return (
-      <div style={{ height: "75vh" }} className="container valign-wrapper">
+class Mission extends Component {
+  state = {
+    food: [],
+    usertype: "Recipient"
+  };
+
+  componentDidMount() {
+    API.getMissions()
+    .then(res => this.setState({ donations: res.data }))
+    .catch(err => console.log(err))
+  };
+
+  render() {
+    return (
+      <div className="container">
         <div className="row">
-          <div className="col s12 center-align">
-            <h4>
-            <b>Hey there,</b> {user.firstname}
-              <p className="flow-text grey-text text-darken-1">
-                You are logged in as Volunteer{" "}
-                <span style={{ fontFamily: "monospace" }}></span>
-              </p>
-            </h4>
-            {/* <button
-              style={{
-                width: "150px",
-                borderRadius: "3px",
-                letterSpacing: "1.5px",
-                marginTop: "1rem"
-              }}
-              onClick={this.onLogoutClick}
-              className="btn btn-large waves-effect waves-light hoverable blue accent-3"
-            >
-              Logout
-            </button> */}
+          <div className="col s8 offset-s2">
+            <h4>These Items are Currently Available for Delivery!</h4>
+
+            {/* Mission Table */}
+            <Container>
+              <DonationList donations={this.state.donations} />
+            </Container>
           </div>
         </div>
       </div>
     );
   }
 }
-Dashboard.propTypes = {
+
+Mission.propTypes = {
   logoutUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired
 };
 const mapStateToProps = state => ({
-  auth: state.auth
+  auth: state.auth,
+  errors: state.errors
 });
 export default connect(
   mapStateToProps,
   { logoutUser }
-)(Dashboard);
+)(Mission);
