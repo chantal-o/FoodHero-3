@@ -1,5 +1,4 @@
 const proxy = require("http-proxy-middleware");
-const users = require("../../routes/api/users");
 
 
 
