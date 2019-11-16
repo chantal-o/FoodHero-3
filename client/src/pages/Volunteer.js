@@ -5,6 +5,8 @@ import { logoutUser } from "../actions/authActions";
 import Container from "../components/Container";
 import YourMission from "../components/YourMission";
 import API from "../utils/api";
+import { Link } from "react-router-dom";
+
 
 class Mission extends Component {
   state = {
@@ -28,6 +30,19 @@ class Mission extends Component {
             {/* Mission Table */}
             <Container>
               <YourMission missions={this.state.missions} />
+              <div className="col s2.4">
+              <Link
+                to="/mission"
+                style={{
+                  width: "140px",
+                  borderRadius: "3px",
+                  letterSpacing: "1.5px"
+                }}
+                className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+              >
+               Submit
+              </Link>
+              </div>
             </Container>
           </div>
         </div>
