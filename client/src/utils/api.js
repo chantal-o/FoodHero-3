@@ -21,7 +21,7 @@ export default {
     },
 
     getDonation: function (id) {
-        return axios.get("/api/donations" + id)
+        return axios.get("/api/donations/" + id)
     },
 
     // getMissions: function () {
