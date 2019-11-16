@@ -23,7 +23,7 @@ class Mission extends Component {
       <div className="container">
         <div className="row">
           <div className="col s8 offset-s2">
-            <h4>These Deilvery Missions are Currently Available!</h4>
+            <h4 className="center">These Deilvery Missions are Currently Available!</h4>
 
             {/* Mission Table */}
             <Container>
