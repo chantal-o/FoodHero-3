@@ -12,6 +12,6 @@ module.exports = function(app) {
     );
 
     app.use(
-      proxy(["/api/donations"], { target: "http://wwww.foodhero.ca:5000" })
+      proxy(["/api/donations"], { target: "http://www.foodhero.ca:5000" })
     );
   };
