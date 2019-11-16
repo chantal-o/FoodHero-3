@@ -18,6 +18,8 @@ import Recipient from "./pages/Recipient";
 import Volunteer from "./pages/Volunteer";
 import Mission from "./pages/Mission";
 import Profile from "./pages/Profile";
+// import Sms from "./components/SMSForm/index";
+
 
 //twillio
 //import SMSForm from './SMSForm';
@@ -64,6 +66,8 @@ class App extends Component {
       <Provider store={store}>
         <Router className="App">
             <Switch>
+            {/* <Route exact path="/" component={Sms} /> */}
+
               <Route exact path="/" component={Landing} />
               <Route exact path="/roptions" component={rOptions} />
               <Route exact path="/registerd" component={RegisterD} />
