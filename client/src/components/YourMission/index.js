@@ -24,7 +24,7 @@ export default function MissionList(props) {
   console.log("==============MEOW===================")
   return (
     <React.Fragment>
-      <h1>Missions</h1>
+      {/* <h3>Missions</h3> */}
       <Table size="small">
         <TableHead>
           <TableRow>

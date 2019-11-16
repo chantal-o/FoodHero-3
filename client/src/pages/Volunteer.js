@@ -3,18 +3,18 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../actions/authActions";
 import Container from "../components/Container";
-import MissionList from "../components/MissionList";
+import YourMission from "../components/YourMission";
 import API from "../utils/api";
 
 class Mission extends Component {
   state = {
-    food: [],
-    usertype: "Recipient"
+    missions: [],
+    usertype: "Volunteer"
   };
 
   componentDidMount() {
     API.getMissions()
-    .then(res => this.setState({ donations: res.data }))
+    .then(res => this.setState({ missions: res.data }))
     .catch(err => console.log(err))
   };
 
@@ -23,11 +23,11 @@ class Mission extends Component {
       <div className="container">
         <div className="row">
           <div className="col s8 offset-s2">
-            <h4>These Items are Currently Available for Delivery!</h4>
+            <h4>These Deilvery Missions are Currently Available!</h4>
 
             {/* Mission Table */}
             <Container>
-              <DonationList donations={this.state.donations} />
+              <YourMission missions={this.state.missions} />
             </Container>
           </div>
         </div>
