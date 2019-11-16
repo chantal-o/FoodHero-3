@@ -77,7 +77,7 @@ return (
       <div className="container">
         <div className="row">
           <div className="col s8 offset-s2">
-            <Link to="/option" className="btn-flat waves-effect">
+            <Link to="/roptions" className="btn-flat waves-effect">
               <i className="material-icons left">keyboard_backspace</i> Back to
               Options
             </Link>
