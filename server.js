@@ -74,7 +74,7 @@ require("./config/passport")(passport);
 app.use("/api/mission", mission);
 app.use("/api/users", users);
 app.use("/api/inventory", inventory);
-// app.use("/api/messages", twilio);
+app.use("/api/messages", twilio);
 
 
 
