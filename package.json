@@ -1,48 +1,34 @@
 {
-  "name": "foodheros",
+  "name": "client",
   "version": "0.1.0",
-  "main": "server.js",
-  "engines": {
-    "node": "12.13.0"
-  },
   "private": true,
+  "homepage": "http://ghastly-werewolf-16606.herokuapp.com",
   "dependencies": {
-    "@material-ui/core": "^4.6.0",
-    "bcryptjs": "^2.4.3",
-    "body-parser": "^1.19.0",
-    "client": "file:client",
-    "concurrently": "^5.0.0",
-    "dotenv": "^8.2.0",
-    "dotenv-safe": "^8.1.0",
-    "express": "^4.17.1",
-    "express-pino-logger": "^4.0.0",
-    "google-maps-react": "^2.0.2",
+    "@material-ui/core": "^4.6.1",
+    "@material-ui/icons": "^4.5.1",
+    "axios": "^0.19.0",
+    "build": "^0.1.4",
+    "classnames": "^2.2.6",
     "http-proxy-middleware": "^0.20.0",
     "is-empty": "^1.2.0",
-    "jsonwebtoken": "^8.5.1",
-    "materialize-css": "^1.0.0",
-    "mongoose": "^5.7.10",
-    "morgan": "^1.9.1",
-    "passport": "^0.4.0",
-    "passport-jwt": "^4.0.0",
-    "react": "^16.11.0",
-    "react-dom": "^16.11.0",
+    "jwt-decode": "^2.2.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
     "react-google-maps": "^9.4.5",
-    "react-materialize": "^3.4.1",
-    "react-scripts": "3.2.0",
-    "serve-favicon": "^2.5.0",
-    "twilio": "^3.37.1",
-    "validator": "^12.0.0"
+    "react-modal": "^3.11.1",
+    "react-redux": "^7.1.3",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "^3.2.0",
+    "recompose": "^0.30.0",
+    "redux": "^4.0.4",
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-    "start:prod": "node server.js",
-    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
-    "client": "cd client && npm run start",
-    "seed": "node scripts/seedDB.js",
-    "install": "cd client && npm install",
-    "build": "cd client && npm run build",
-    "heroku-postbuild": "npm run build"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -58,8 +44,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "nodemon": "^1.19.4"
   }
 }
