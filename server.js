@@ -8,7 +8,10 @@ const users = require("./routes/api/users");
 const inventory = require("./routes/api/inventory");
 // const twilio = require("./routes/api/twilio");
 
+var herokuStrategy = require('passport-heroku').Strategy;
 
+var heroku_APP_ID = "your app idf0ffaf0-3d57-4291-9d7e-fcac348104d8";
+var heroku_APP_SECRET = "9e12971d-fed6-406a-8a6a-6166a86ed2b2";
 
 
 const app = express();
@@ -30,7 +33,13 @@ const client = require('twilio')(
     process.env.TWILIO_AUTH_TOKEN)
     //twillio
   
-
+    app.get('/', function(req, res, next) {
+      res.sendfile('./html/auth.html');
+    });
+    app.use(passport.initialize());
+    app.use(passport.session());
+    app.use(app.router);
+    
 app.get('/api/greeting', (req, res) => {
   const name = req.query.name || 'World';
   res.setHeader('Content-Type', 'application/json');
