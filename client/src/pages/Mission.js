@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import API from "../utils/api";
 import Container from "../components/Container";
 import YourMission from "../components/YourMission";
+// import { compose, withProps, lifecycle } from "recompose"
+// import { withScriptjs, withGoogleMap, GoogleMap,DirectionsRenderer} from "react-google-maps"
 import Map2 from "../components/Map2";
-
 
 class Mission extends Component {
     state = {
@@ -27,7 +28,7 @@ class Mission extends Component {
         navigator.geolocation.getCurrentPosition( (position) => {
             console.log(position)
             this.setState({ pos: position })})
-    }
+    };
 
 
 
@@ -48,8 +49,6 @@ class Mission extends Component {
         )
     }
 };
-
-
 
 export default Mission
 
