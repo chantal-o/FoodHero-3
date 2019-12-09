@@ -33,6 +33,7 @@ export default function DonationList(props) {
             <TableCell>Description</TableCell>
             <TableCell>Shelf Life</TableCell>
             <TableCell>Pickup Time</TableCell>
+            <TableCell>Select this Donation!</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -44,6 +45,7 @@ export default function DonationList(props) {
               <TableCell>{row.description}</TableCell>
               <TableCell>{row.shelflife}</TableCell>
               <TableCell>{row.pickuptime}</TableCell>
+              <TableCell><button type="submit">Pick Me!</button></TableCell>
             </TableRow>
           ))}
         </TableBody>

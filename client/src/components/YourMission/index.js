@@ -35,6 +35,7 @@ export default function MissionList(props) {
             <TableCell>Donor Name</TableCell>
             <TableCell>Volunteer Name</TableCell>
             <TableCell>Recipient Name</TableCell>
+            <TableCell>Select This Mission!</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -47,6 +48,7 @@ export default function MissionList(props) {
               <TableCell>{row.donorname}</TableCell>
               <TableCell>{row.volunteername}</TableCell>
               <TableCell>{row.recipientname}</TableCell>
+              <TableCell><button>Pick Me!</button></TableCell>
             </TableRow>
           ))}
         </TableBody>
