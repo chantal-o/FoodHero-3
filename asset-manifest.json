@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/FoodHero-3/static/css/main.34de6062.chunk.css",
+    "main.js": "/FoodHero-3/static/js/main.e2abe11c.chunk.js",
+    "main.js.map": "/FoodHero-3/static/js/main.e2abe11c.chunk.js.map",
+    "runtime-main.js": "/FoodHero-3/static/js/runtime-main.3ce27f2f.js",
+    "runtime-main.js.map": "/FoodHero-3/static/js/runtime-main.3ce27f2f.js.map",
+    "static/js/2.797b1ef1.chunk.js": "/FoodHero-3/static/js/2.797b1ef1.chunk.js",
+    "static/js/2.797b1ef1.chunk.js.map": "/FoodHero-3/static/js/2.797b1ef1.chunk.js.map",
+    "index.html": "/FoodHero-3/index.html",
+    "precache-manifest.844e4a89ae52078c0954d6ba4b195a8b.js": "/FoodHero-3/precache-manifest.844e4a89ae52078c0954d6ba4b195a8b.js",
+    "service-worker.js": "/FoodHero-3/service-worker.js",
+    "static/css/main.34de6062.chunk.css.map": "/FoodHero-3/static/css/main.34de6062.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3ce27f2f.js",
+    "static/js/2.797b1ef1.chunk.js",
+    "static/css/main.34de6062.chunk.css",
+    "static/js/main.e2abe11c.chunk.js"
+  ]
+}
