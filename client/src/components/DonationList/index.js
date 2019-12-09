@@ -24,7 +24,6 @@ export default function DonationList(props) {
   console.log("==============MEOW===================")
   return (
     <React.Fragment>
-      <h1>Available Donations</h1>
       <Table size="small">
         <TableHead>
           <TableRow>

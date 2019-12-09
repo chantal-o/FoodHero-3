@@ -3,9 +3,10 @@ const Schema = mongoose.Schema;
 
 const inventorySchema = new Schema({
   itemname: {type: String },
-  quantity: {type: Number },
+  numberofunits: {type: Number },
   description: {type: String },  
-  username: {type: String },
+  shelflife: {type: String },
+  pickuptime: {type: String },
   date: { type: Date, default: Date.now }
 });
 
