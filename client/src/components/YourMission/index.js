@@ -32,9 +32,9 @@ export default function MissionList(props) {
             <TableCell>Item Name</TableCell>
             <TableCell>Quantity</TableCell>
             <TableCell>Description</TableCell>
-            <TableCell>Donor Name</TableCell>
-            <TableCell>Volunteer Name</TableCell>
-            <TableCell>Recipient Name</TableCell>
+            <TableCell>Donor Address</TableCell>
+            <TableCell>Volunteer Address</TableCell>
+            <TableCell>Recipient Address</TableCell>
             <TableCell>Select This Mission!</TableCell>
           </TableRow>
         </TableHead>
