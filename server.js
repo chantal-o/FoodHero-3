@@ -6,6 +6,7 @@ const pino = require('express-pino-logger')();
 const mission = require("./routes/api/mission");
 const users = require("./routes/api/users");
 const inventory = require("./routes/api/inventory");
+require('dotenv').config()
 // const twilio = require("./routes/api/twilio");
 
 const app = express();
