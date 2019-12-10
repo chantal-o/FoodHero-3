@@ -3,10 +3,9 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 const pino = require('express-pino-logger')();
-const mission = require("./routes/api/mission");
-const users = require("./routes/api/users");
-const inventory = require("./routes/api/inventory");
-require('dotenv').config()
+const mission = require("./routes/API/mission");
+const users = require("./routes/API/users");
+const inventory = require("./routes/API/inventory");
 // const twilio = require("./routes/api/twilio");
 
 const app = express();
