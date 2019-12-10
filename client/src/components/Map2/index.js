@@ -18,15 +18,18 @@ const MapWithADirectionsRenderer = compose(
     componentDidMount() {
       let lat = this.props.pos.coords.latitude;
       let lng = this.props.pos.coords.longitude;
+      let missiondest = this.props.missions[0].recipientaddress;
+      let missiondonor = this.props.missions[0].donoraddress;
+      console.log("MISSION", missiondest);
       const DirectionsService = new google.maps.DirectionsService();
       DirectionsService.route({
         origin: new google.maps.LatLng(lat, lng),
-        destination: new google.maps.LatLng(43.6587, -79.4007),
+        destination: missiondest,
         // waypoints: new google.maps.LatLng(43.8525925, -79.6622222),
         travelMode: google.maps.TravelMode.DRIVING,
         waypoints: [
           {
-              location: new google.maps.LatLng(43.6622, -79.3803),
+              location: missiondonor,
           }
        ],
       }, (result, status) => {
