@@ -87,5 +87,14 @@ app.post('/inventory', (req, res) => {
   })
 });
 
+// Route for posting new missions to MongoDB
+app.post('/mission', (req, res) => {
+  console.log(req.body);
+  db.collection('missions').insertOne(req.body, (err, data) => {
+      if(err) return console.log(err);
+      res.send(('saved to db: ' + data));
+  })
+});
+
 const port = process.env.mongoURI || "5000"; // process.env.port is Heroku's port if you choose to deploy the app there
 app.listen(port, () => console.log(`Server up and running on port ${port} !`));
