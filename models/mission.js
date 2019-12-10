@@ -5,9 +5,9 @@ const missionSchema = new Schema({
   itemname: {type: String },
   quantity: {type: Number },
   description: {type: String },  
-  donorname: {type: String },
-  volunteername: {type: String },
-  recipientname: {type: String },
+  donoraddress: {type: String },
+  volunteeraddress: {type: String },
+  recipientaddress: {type: String },
   date: { type: Date, default: Date.now }
 });
 
