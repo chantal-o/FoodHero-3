@@ -8,18 +8,20 @@ const users = require("./routes/api/users");
 const inventory = require("./routes/api/inventory");
 // const twilio = require("./routes/api/twilio");
 
-
-
-
 const app = express();
 
 // Bodyparser middleware
 app.use(
   bodyParser.urlencoded({
-    extended: false
+    extended: true,
+    limit: '50mb',
+    parameterLimit: 100000
   })
 );
-app.use(bodyParser.json());
+app.use(bodyParser.json({
+  limit: '50mb',
+  parameterLimit: 100000
+}));
 app.use(pino);
 
 //twillio
@@ -76,12 +78,14 @@ app.use("/api/users", users);
 app.use("/api/inventory", inventory);
 // app.use("/api/messages", twilio);
 
-
-
-
-
-
-
+// Route for posting new donations to MongoDB
+app.post('/inventory', (req, res) => {
+  console.log(req.body);
+  db.collection('inventory').insertOne(req.body, (err, data) => {
+      if(err) return console.log(err);
+      res.send(('saved to db: ' + data));
+  })
+});
 
 const port = process.env.mongoURI || "5000"; // process.env.port is Heroku's port if you choose to deploy the app there
 app.listen(port, () => console.log(`Server up and running on port ${port} !`));

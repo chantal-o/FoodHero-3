@@ -1,21 +1,69 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { logoutUser } from "../actions/authActions";
+// import { newDonation } from "../actions/newDonation";
 import classnames from "classnames";
 
-class Dashboard extends Component {
-  state = {
-    usertype: "Donor",
-    errors: {}
+class Donor extends Component {
+  constructor() {
+    super();
+    this.state = {
+      itemname: "",
+      numberofunits: "",
+      description: "",
+      shelflife: "",
+      pickuptime: "",
+      errors: {}
+    };
+  }
+
+  componentDidMount() {
+    // If logged in and user navigates to Register page, should redirect them to dashboard
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/donor");
+    }
+  }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({
+        errors: nextProps.errors
+      });
+    }
+  }
+
+  onChange = e => {
+    this.setState({ [e.target.id]: e.target.value });
   };
+
+  onSubmit = e => {
+    e.preventDefault();
+    const donation = {
+      itemname: this.state.itemname,
+      numberofunits: this.state.numberofunits,
+      description: this.state.description,
+      shelflife: this.state.shelflife,
+      pickuptime: this.state.pickuptime
+    };
+
+  fetch("http://localhost:3000/api/inventory", {
+    method: "POST",
+    body: JSON.stringify(donation),
+    // body: donation,
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+  .then(res => res.json())
+  .then(data => console.log(data))
+  // this.props.newDonation(donation, this.props.history);
+}
 
   // onLogoutClick = e => {
   //   e.preventDefault();
   //   this.props.logoutUser();
   // };
 
-  render() {
+render() {
   const { errors } = this.state;
   console.log(this.state);
   // const { user } = this.props.auth;
@@ -48,7 +96,7 @@ class Dashboard extends Component {
                 value={this.state.numberofunits}
                 error={errors.numberofunits}
                 id="numberofunits"
-                type="number"
+                type="text"
                 className={classnames("", {
                   invalid: errors.numberofunits
                 })}
@@ -110,12 +158,21 @@ class Dashboard extends Component {
                 letterSpacing: "1.5px",
                 marginTop: "1rem"
               }}
-              onClick={this.onSubmitClick}
-              className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+            //   onClick={this.onSubmitClick}
+            //   className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+            // >
+              onChange={this.onChange}
+              value={this.state.donation}
+              error={errors.donation}
+              id="donation"
+              type="submit"
+              className={classnames("btn btn-large waves-effect waves-light hoverable blue accent-3", {
+                invalid: errors.donation
+              })}
             >
-              Submit
-            </button>
-          </form>
+          Submit
+        </button>
+      </form>
 
           {/* Logout Button */}
           {/* <button
@@ -137,7 +194,7 @@ class Dashboard extends Component {
   )}
 };
 
-Dashboard.propTypes = {
+Donor.propTypes = {
   logoutUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
@@ -147,6 +204,6 @@ const mapStateToProps = state => ({
   errors: state.errors
 });
 export default connect(
-  mapStateToProps,
-  { logoutUser }
-)(Dashboard);
+  mapStateToProps
+  // { newDonation }
+)(Donor);

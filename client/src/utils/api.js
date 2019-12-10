@@ -17,7 +17,7 @@ export default {
     },
 
     getInventory: function () {
-        return axios.get("/api/inventory")
+        return axios.get("/api/inventory");
     }
 
     // getInventory: function (id) {
