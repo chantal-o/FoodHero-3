@@ -40,7 +40,8 @@ class Mission extends Component {
                         <h3 className="center">Current Mission:</h3>
                         <Container>
                             <YourMission missions ={this.state.missions} />
-                            <Map2 pos ={this.state.pos}/>
+                            <Map2 pos ={this.state.pos}
+                            missions ={this.state.missions}/>
                         </Container>
                     </div>
                 </div>
